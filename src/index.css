@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -113,5 +112,23 @@
 
   .code-block pre {
     @apply m-0;
+  }
+
+  /* Chat container scrolling */
+  .chat-scroll-container {
+    @apply overflow-y-auto;
+  }
+
+  /* Make scrollbar more visible */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full hover:bg-primary/70;
   }
 }

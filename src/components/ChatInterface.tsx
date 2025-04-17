@@ -133,13 +133,16 @@ const ChatInterface: React.FC = () => {
     if (scrollAreaRef.current) {
       const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
       if (scrollContainer) {
-        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+        // Force a small delay to ensure the DOM has updated
+        setTimeout(() => {
+          scrollContainer.scrollTop = scrollContainer.scrollHeight;
+        }, 50);
       }
     }
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-full max-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col h-full max-h-[calc(100vh-4rem)] overflow-hidden">
       {showApiInput && (
         <div className="bg-card p-4 mb-4 rounded-lg border border-border">
           <h3 className="text-lg font-medium mb-2">Groq API Key Required</h3>
@@ -165,8 +168,12 @@ const ChatInterface: React.FC = () => {
         </div>
       )}
 
-      <ScrollArea className="flex-1 pr-4" ref={scrollAreaRef}>
-        <div className="flex flex-col gap-4 pb-4">
+      <ScrollArea
+        className="flex-1 overflow-y-auto chat-scroll-container"
+        ref={scrollAreaRef}
+        style={{ height: 'calc(100vh - 12rem)' }}
+      >
+        <div className="flex flex-col gap-4 pb-4 px-4 w-full">
           {messages.map((message, index) => (
             <ChatMessage
               key={index}
