@@ -107,7 +107,7 @@
 
   /* Code block styling */
   .code-block {
-    @apply bg-muted rounded-md p-4 font-mono text-sm overflow-x-auto;
+    @apply bg-muted rounded-md p-4 font-mono text-sm overflow-x-auto max-w-full;
   }
 
   .code-block pre {
@@ -130,5 +130,11 @@
 
   ::-webkit-scrollbar-thumb {
     @apply bg-primary/50 rounded-full hover:bg-primary/70;
+  }
+
+  /* Custom text wrapping */
+  .overflow-wrap-anywhere {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }

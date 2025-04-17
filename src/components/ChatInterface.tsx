@@ -173,7 +173,7 @@ const ChatInterface: React.FC = () => {
         ref={scrollAreaRef}
         style={{ height: 'calc(100vh - 12rem)' }}
       >
-        <div className="flex flex-col gap-4 pb-4 px-4 w-full">
+        <div className="flex flex-col gap-4 pb-4 px-4 w-full max-w-full">
           {messages.map((message, index) => (
             <ChatMessage
               key={index}

@@ -10,7 +10,7 @@ const Index: React.FC = () => {
       <BabylonScene />
       <NavBar />
       <main className="flex-1 container py-6">
-        <div className="mx-auto max-w-3xl h-full">
+        <div className="mx-auto max-w-5xl h-full">
           <ChatInterface />
         </div>
       </main>

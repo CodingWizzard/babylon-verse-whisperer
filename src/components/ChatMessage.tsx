@@ -17,25 +17,25 @@ const formatMessageContent = (content: string) => {
       // Odd indices contain code
       if (index % 2 === 1) {
         return (
-          <div key={index} className="code-block my-2">
-            <pre>{part.trim()}</pre>
+          <div key={index} className="code-block my-2 w-full overflow-x-auto">
+            <pre className="whitespace-pre-wrap break-words">{part.trim()}</pre>
           </div>
         );
       }
       // Process regular text with line breaks
-      return <p key={index} dangerouslySetInnerHTML={{ __html: part.replace(/\n/g, '<br/>') }} />;
+      return <p key={index} className="break-words overflow-wrap-anywhere" dangerouslySetInnerHTML={{ __html: part.replace(/\n/g, '<br/>') }} />;
     });
   }
-  
+
   // For messages without code blocks, just handle line breaks
-  return <p dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />;
+  return <p className="break-words overflow-wrap-anywhere" dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />;
 };
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ content, isUser, timestamp }) => {
   return (
     <div className={cn(
       "flex gap-3 p-4 rounded-lg",
-      isUser ? "bg-muted ml-12" : "bg-card mr-12",
+      isUser ? "bg-muted ml-8" : "bg-card mr-8",
       "animate-fade-in"
     )}>
       <Avatar className={cn(
@@ -53,7 +53,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ content, isUser, timestamp })
             </span>
           )}
         </div>
-        <div className="text-sm text-foreground">
+        <div className="text-sm text-foreground break-words overflow-wrap-anywhere">
           {formatMessageContent(content)}
         </div>
       </div>
