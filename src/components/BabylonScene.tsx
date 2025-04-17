@@ -51,9 +51,9 @@ const BabylonScene: React.FC = () => {
       
       // Create a material with custom shader
       const material = new BABYLON.StandardMaterial("material", scene);
-      material.diffuseColor = new BABYLON.Color3.FromHexString("#5c2d91");
-      material.specularColor = new BABYLON.Color3.FromHexString("#42a5f5");
-      material.emissiveColor = new BABYLON.Color3.FromHexString("#3e1d61").scale(0.2);
+      material.diffuseColor = BABYLON.Color3.FromHexString("#5c2d91");
+      material.specularColor = BABYLON.Color3.FromHexString("#42a5f5");
+      material.emissiveColor = BABYLON.Color3.FromHexString("#3e1d61").scale(0.2);
       knot.material = material;
       
       // Add animation
